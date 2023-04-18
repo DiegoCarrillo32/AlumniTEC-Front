@@ -1,5 +1,5 @@
 
-export function Input({ placeholder, className = '', type= 'text' }) {
+export function Input({ placeholder, className = '', type= 'text', name = '' }) {
   return (
     <div
       className={`flex w-[260px] items-center rounded-md
@@ -7,6 +7,7 @@ export function Input({ placeholder, className = '', type= 'text' }) {
     >
       <div className="relative">
         <input
+          name={name}
           type={type}
           className={`peer w-[260px] rounded-xl border p-[0.6rem] outline-none
           placeholder:text-transparent xl:w-[328px]`}
