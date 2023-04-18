@@ -10,22 +10,20 @@ export const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log('submit', event.target.password.value);
     toast.promise(login_validate(event.target.carnet.value,event.target.password.value),{
-      loading: "Loading",
+      loading: "Revisando información",
       success: (data)=>{
         console.log(data)
         if(data.id){
           navigation('/dashboard')
-          return "Ingresado"
+          return "Se ha iniciado sesión"
         }else{
-          return "Error"
+          return "Error, contraseña o DNI incorrecto"
         }
       },
-      error: "Error"
+      error: "Error, contacte un administrador"
     })
-    //navigation('/dashboard')
-    //toast("kechito")
+  
   }
   return (
     <div className="flex flex-col items-center justify-center h-screen w-screen bg-tecbg bg-no-repeat ">
