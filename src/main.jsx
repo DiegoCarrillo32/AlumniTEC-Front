@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Home } from './pages/Home/Home';
+import { Alumni } from './pages/Alumni/Alumni';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "alumni",
-        element: <div>Alumnus</div>,
+        element: <Alumni/>,
         
       },
     ]

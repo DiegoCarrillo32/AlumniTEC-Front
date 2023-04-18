@@ -1,4 +1,6 @@
-const API_URL = "http://localhost:3000/administrator"
+import { BASE_API } from "../utils/constants"
+
+const API_URL = `${BASE_API}/administrator`
 export async function login_validate(id,password){
     console.log(id,password)
   if (id == "" || password == ""){
