@@ -7,5 +7,15 @@ export async function fetchAlumni(page = 0, limit = 10){
         mode: 'cors',
       })
 
-    return response;
+    return response.json();
+}
+
+export async function fetchAlumniById(id){
+    const BASE_URL = `${BASE_API}/alumni/${id}`
+    const response = await fetch(BASE_URL,{ 
+        method: 'GET',
+        mode: 'cors',
+      })
+
+    return response.json();
 }
