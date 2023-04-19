@@ -14,7 +14,6 @@ export const DetailedAlumni = () => {
       setLoading(true)
       const res = await fetchAlumniById(id)
       setAlumni(res)
-      console.log(res, "RESPUESTA");
       setLoading(false)
     })()
   }, [])

@@ -10,16 +10,6 @@ export const Home = () => {
             icon: <RxDashboard size={30}/>,
             path: '/dashboard/alumni'
         },
-        {
-            title: 'Egresados',
-            icon: <RxDashboard size={30}/>,
-            path: '/dashboard/alumni'
-        },
-        {
-            title: 'Egresados',
-            icon: <RxDashboard size={30}/>,
-            path: '/dashboard/alumni'
-        },
         
     ]
   return (

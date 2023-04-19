@@ -12,7 +12,8 @@ export const Alumni = () => {
     useEffect(()=>{
         (async ()=>{
             setLoading(true)
-            const res = await fetchAlumni(0, 10)
+            const user = JSON.parse(localStorage.getItem('user'))
+            const res = await fetchAlumni(0, 10, user.isAdminOf)
             setData(res);
             setLoading(false)
         })()
@@ -21,7 +22,7 @@ export const Alumni = () => {
 
 
     Loading ?
-    <div className='flex items-center justify-center w-full h-full'>
+    <div className='flex items-center justify-center w-full h-screen'>
     <PacmanLoader color={"#123abc"} loading={Loading} size={24} />
   </div>
     :
