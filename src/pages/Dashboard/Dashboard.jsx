@@ -10,7 +10,6 @@ export const Dashboard = () => {
       toast.error('Usuario no autenticado')
       navigation('/')
     }
-  
   }, [])
 
   return (
