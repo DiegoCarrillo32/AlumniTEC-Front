@@ -13,8 +13,8 @@ export const Login = () => {
     toast.promise(login_validate(event.target.carnet.value,event.target.password.value),{
       loading: "Revisando información",
       success: (data)=>{
-        console.log(data)
-        if(data.id){
+        if(data.access_token){
+          localStorage.setItem('token',data.access_token)
           navigation('/dashboard')
           return "Se ha iniciado sesión"
         }else{

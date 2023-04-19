@@ -10,6 +10,8 @@ import {
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Home } from './pages/Home/Home';
 import { Alumni } from './pages/Alumni/Alumni';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
+import { DetailedAlumni } from './pages/DetailedAlumni/DetailedAlumni';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard/>,
+    element: <PrivateRoute>
+      <Dashboard/>
+    </PrivateRoute>,
     children: [
       {
         path: "",
@@ -28,8 +32,12 @@ const router = createBrowserRouter([
       {
         path: "alumni",
         element: <Alumni/>,
-        
+      
       },
+      {
+        path: ":id",
+        element: <DetailedAlumni/>,
+      }
     ]
   },
 ]);

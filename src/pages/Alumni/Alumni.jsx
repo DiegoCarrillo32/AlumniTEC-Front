@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react'
+import MUIDataTable from "mui-datatables";
+import PacmanLoader from 'react-spinners/SyncLoader'
+
 import { fetchAlumni } from '../../api/fetch_alumni'
+import { COLUMNS, OPTIONS } from '../../utils/constants';
 
 export const Alumni = () => {
-    const [Paginate, setPagiante] = useState({
-        page: 0,
-        limit: 10,
-    });
+    const [Data, setData] = useState([])
+    const [Loading, setLoading] = useState(true)
+
     useEffect(()=>{
-        
         (async ()=>{
-            console.log(await fetchAlumni(Paginate.page, Paginate.limit));
+            setLoading(true)
+            const res = await fetchAlumni(0, 10)
+            setData(res);
+            setLoading(false)
         })()
     }, [])
   return (
-    //TABLA DE ALUMNOS 
-    <>
-        <button onClick={()=>{
-            setPagiante({
-                page: Paginate.page + 1,
-                limit: Paginate.limit
-            })
-        }} >Aumentar paginación</button>
-        <button onClick={()=>{
-            (async ()=>{
-                console.log(await fetchAlumni(Paginate.page, Paginate.limit));
-            })()
-        }} >Ver mas datos</button>
-    </>
+
+
+    Loading ?
+    <div className='flex items-center justify-center w-full h-full'>
+    <PacmanLoader color={"#123abc"} loading={Loading} size={24} />
+  </div>
+    :
+     (
+        <MUIDataTable
+            className="w-full"
+            title={"Lista de egresados"}
+            data={Data}
+            columns={COLUMNS}
+            options={OPTIONS}
+            
+        />
+    )
   )
 }
