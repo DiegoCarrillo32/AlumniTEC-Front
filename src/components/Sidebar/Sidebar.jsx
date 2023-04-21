@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { RxDashboard, RxPerson } from 'react-icons/rx'
+import { RxDashboard, RxPerson, RxPencil1 } from 'react-icons/rx'
 import { useNavigate } from 'react-router-dom'
 export const Sidebar = () => {
 
@@ -18,7 +18,7 @@ export const Sidebar = () => {
                 </div>
             </div>
 
-            <nav className='flex flex-col justify-between flex-1 px-2 py-4'>
+            <nav className='flex flex-col justify-between flex-1 px-2 py-4 h-full'>
                 <ul>
                     <li  onClick={()=>{
                             navigate('/dashboard')
@@ -28,9 +28,15 @@ export const Sidebar = () => {
                     </li>
                     <li  onClick={()=>{
                             navigate('/dashboard/alumni')
-                        }} className='flex items-center py-2 px-4 rounded-lg bg-indigo-500 cursor-pointer'>
+                        }} className='flex items-center py-2 px-4 rounded-lg bg-indigo-500 mb-5 cursor-pointer'>
                         <RxPerson size={24} color={"white" }/>
                         <span className='ml-4 text-white font-medium'>Egresados</span>
+                    </li>
+                    <li  onClick={()=>{
+                            navigate('/dashboard/specialization')
+                        }} className='flex items-center py-2 px-4 rounded-lg bg-indigo-500 cursor-pointer'>
+                        <RxPencil1 size={24} color={"white" }/>
+                        <span className='ml-4 text-white font-medium'>Especializaciones</span>
                     </li>
                     
 
@@ -61,6 +67,11 @@ export const Sidebar = () => {
                             navigate('/dashboard/alumni')
                         }} className='flex items-center justify-center py-2 px-4 rounded-lg bg-indigo-500 mb-5 cursor-pointer'>
                             <RxPerson size={24} color={"white" }/>
+                        </li>
+                        <li onClick={()=>{
+                            navigate('/dashboard/specialization')
+                        }} className='flex items-center justify-center py-2 px-4 rounded-lg bg-indigo-500 mb-5 cursor-pointer'>
+                            <RxPencil1 size={24} color={"white" }/>
                         </li>
                     
                     </ul>
