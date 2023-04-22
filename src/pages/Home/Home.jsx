@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from '../../components/Card/Card'
 
 import { RxDashboard, RxPerson, RxPencil1 } from 'react-icons/rx'
+import { MdWork } from 'react-icons/md'
 
 export const Home = () => {
     const Items = [
@@ -14,6 +15,11 @@ export const Home = () => {
             title: 'Especializaciones',
             icon: <RxPencil1 size={30}/>,
             path: '/dashboard/specialization'
+        },
+        {
+            title: 'Ofertas de trabajo',
+            icon: <MdWork size={30}/>,
+            path: '/dashboard/joboffer'
         },
         
     ]

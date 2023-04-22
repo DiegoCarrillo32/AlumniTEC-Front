@@ -1,7 +1,6 @@
-import { Box, Modal, Typography } from '@mui/material'
+import { Box, Modal } from '@mui/material'
 import MUIDataTable from 'mui-datatables'
 import React, { useEffect, useState } from 'react'
-import { PortalWithState } from 'react-portal'
 import { PacmanLoader } from 'react-spinners'
 import { Button } from '../../components/Button/Button'
 import { Input } from '../../components/Input/Input'
@@ -151,17 +150,17 @@ export const Specialization = () => {
             open={open}
             onClose={handleClose}
             >
-            <Box className="absolute top-1/4 left-1/4 bg-slate-50 h-48  rounded-md ">
+            <Box className="absolute top-1/4 left-1/4 bg-slate-50 h-fit p-4  rounded-md ">
                 {
                     Mode === 'add' ?
                     <form onSubmit={handleSubmit}>
                         <Input placeholder={"Nombre"} className='m-2' name='nombre'/>
-                        <Button>Añadir especializacion</Button>
+                        <Button className="m-2">Añadir especializacion</Button>
                     </form>
                     :
                     <form onSubmit={(e)=>handleEdit(edit, e)}>
                         <Input placeholder={"Nombre"} className='m-2' name='nombre' defaultValue={edit.rowData[0]}/>
-                        <Button>Editar especializacion</Button>
+                        <Button className="m-2">Editar especializacion</Button>
                     </form>
                 }
             </Box>
