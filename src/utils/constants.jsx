@@ -8,6 +8,7 @@ export const OPTIONS = {
     rowsPerPage: 10,
     rowsPerPageOptions: [10, 20, 30],
   };
+
 export const COLUMNS = [{
     name:"name",
     label:"Nombre",

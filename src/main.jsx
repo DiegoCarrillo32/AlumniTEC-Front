@@ -12,6 +12,8 @@ import { Home } from './pages/Home/Home';
 import { Alumni } from './pages/Alumni/Alumni';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { DetailedAlumni } from './pages/DetailedAlumni/DetailedAlumni';
+import { Specialization } from './pages/Specialization/Specialization';
+import { JobOffer } from './pages/JobOffer/JobOffer';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,16 @@ const router = createBrowserRouter([
       {
         path: ":id",
         element: <DetailedAlumni/>,
+      }
+      ,
+      {
+        path: "specialization",
+        element: <Specialization/>,
+      }
+      ,
+      {
+        path: "joboffer",
+        element: <JobOffer/>,
       }
     ]
   },
