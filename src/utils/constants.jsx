@@ -2,6 +2,44 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/Button/Button";
 
 export const BASE_API = 'http://localhost:3000'
+export const ACTIVITY_COLUMNS = [
+    {
+        name:"activityName",
+        label:"Nombre",
+        options:{
+            filter: false,
+        }
+    },
+    {
+        name:"activityPlace",
+        label:"Lugar",
+        options:{
+            filter: false,
+        }
+    },
+    {
+        name:"initDate",
+        label:"Fecha de inicio",
+        options:{
+            filter: false,
+        }
+    },
+
+    {
+        name:"endDate",
+        label:"Fecha de fin",
+        options:{
+            filter: false,
+        }
+    },
+    {
+        name:"activityDescription",
+        label:"Descripción",
+        options:{
+            filter: false,
+        }
+    },
+]
 export const OPTIONS = {
     dropdown: true,
     filterType: 'checkbox',
