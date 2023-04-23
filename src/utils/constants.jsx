@@ -9,6 +9,34 @@ export const OPTIONS = {
     rowsPerPageOptions: [10, 20, 30],
   };
 
+  export const COLUMNS_OFFERS = [{
+    name:"description",
+    label:"Descripción",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"initDate",
+    label:"Fecha de inicio",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"endDate",
+    label:"Fecha de cierre",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"id",
+    label:"ID",
+    options:{
+        filter: false,
+        display: false,
+    }
+}
+  ]
+
 export const COLUMNS = [{
     name:"name",
     label:"Nombre",
