@@ -21,7 +21,11 @@ export const Home = () => {
             icon: <MdWork size={30}/>,
             path: '/dashboard/joboffer'
         },
-        
+        {
+            title: 'Actividades Extracurriculares',
+            icon: <RxPencil1 size={30}/>,
+            path: '/dashboard/activity'
+        }
     ]
   return (
     <div className='flex items-center justify-center  flex-wrap h-screen overflow-y-auto'>

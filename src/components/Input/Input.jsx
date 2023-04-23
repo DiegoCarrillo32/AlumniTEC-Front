@@ -1,5 +1,5 @@
 
-export function Input({ placeholder, className = '', type= 'text', name = '', defaultValue = '' }) {
+export function Input({ placeholder, className = '', type= 'text', name = '', defaultValue = '',required = false }) {
   return (
     <div
       className={`flex w-[260px] items-center rounded-md
@@ -7,6 +7,7 @@ export function Input({ placeholder, className = '', type= 'text', name = '', de
     >
       <div className="relative">
         <input
+          required = {required}
           defaultValue={defaultValue}
           name={name}
           type={type}

@@ -45,8 +45,13 @@ export const Sidebar = () => {
                         <RxPencil1 size={24} color={"white" }/>
                         <span className='ml-4 text-white font-medium'>Ofertas de trabajo</span>
                     </li>
+                    <li  onClick={()=>{
+                        navigate('/dashboard/activity')
+                    }} className='flex items-center py-2 px-4 rounded-lg mb-5 bg-indigo-500 cursor-pointer'>
+                    <RxPencil1 size={24} color={"white" }/>
+                    <span className='ml-4 text-white font-medium'>Actividades Extracurriculares</span>
+                </li>
                     
-
                 </ul>
                 </nav>
 
@@ -85,7 +90,11 @@ export const Sidebar = () => {
                         }} className='flex items-center justify-center py-2 px-4 rounded-lg bg-indigo-500 mb-5 cursor-pointer'>
                             <MdWork size={24} color={"white" }/>
                         </li>
-                    
+                        <li onClick={()=>{
+                            navigate('/dashboard/activity')
+                        }} className='flex items-center justify-center py-2 px-4 rounded-lg bg-indigo-500 mb-5 cursor-pointer'>
+                            <MdWork size={24} color={"white" }/>
+                        </li>
                     </ul>
                 </nav>
             </section>   
