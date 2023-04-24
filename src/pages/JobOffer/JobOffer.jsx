@@ -46,7 +46,6 @@ export const JobOffer = () => {
         (async ()=>{
             setLoading(true)
             const res = await getJobOffers()
-            console.log(res);
             setJobOffers(res)
             setLoading(false)
 
@@ -57,7 +56,7 @@ export const JobOffer = () => {
     Loading ? <div className='flex items-center justify-center w-full h-screen'>
     <SyncLoader color={"#123abc"} loading={Loading} size={24} />
   </div> :
-    <div className='flex flex-col h-screen w-screen p-10'>
+    <div className='flex flex-col h-screen w-screen'>
         <Button onClick={handleOpen}>
             <span>Añadir oferta de trabajo</span>
         </Button>

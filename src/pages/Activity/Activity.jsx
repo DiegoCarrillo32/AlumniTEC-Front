@@ -10,9 +10,11 @@ import { ACTIVITY_COLUMNS, OPTIONS } from '../../utils/constants';
 import MUIDataTable from 'mui-datatables';
 import { Box, Modal } from '@mui/material';
 import { toast } from 'sonner';
+import { SyncLoader } from 'react-spinners';
 
 export const Activity = () => {
     const [alumni,setListAlumni] = useState([]);
+    const [Loading, setLoading] = useState(true)
     const [selectedAlumni,setSelectedAlumni] = useState([]);
     const [activity,setActivity] = useState([]);
     const [ open, setOpen ] = useState(false)
@@ -23,9 +25,9 @@ export const Activity = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //console.log(e.target.Egresados)
-        //console.log(selectedAlumni)
-        //console.log(selectedAlumni.map((alumni)=>alumni.value))
+        
+        
+        
         const data = {
             alumni: selectedAlumni.map((alumni)=>alumni.value),
             initDate: e.target.fi.value,
@@ -35,35 +37,43 @@ export const Activity = () => {
             activityDescription: e.target.da.value,
         }
         const res = await create_activity(data)
-        setActivity([...activity, res])
+        setLoading(true)
         handleClose()
         if(res.id){
+            setActivity([...activity, res])
             toast.success('Actividad creada')
         }
-        //console.log(data)
+        setLoading(false)
+
+        
     }
     useEffect(()=>{
         (async ()=>{
+            setLoading(true)
             const user = JSON.parse(localStorage.getItem('user'))
             const res = await fetchalumniIdName(user.isAdminOf)
             setListAlumni(res)
-            console.log(res )
+            setLoading(false)
         } )()
 
         },[])
 
     useEffect(()=>{
         (async ()=>{
+            setLoading(true)
             const res = await fetch_activity()
             setActivity(res)
-            console.log(res )
+            setLoading(false)
         } )()
     },[])
 
     return (
-    <div className = "w-screen">
+        Loading ? <div className='flex items-center justify-center w-full h-screen'>
+    <SyncLoader color={"#123abc"} loading={Loading} size={24} />
+  </div> :
+    <div className = "w-screen h-screen">
     <Button onClick={handleOpen}>
-        <span>Añadir oferta de trabajo</span>
+        <span>Añadir Actividad</span>
     </Button>  
       <MUIDataTable
             className="w-full"
@@ -104,4 +114,4 @@ export const Activity = () => {
     </div>
   );
 }
-//export default activity
+

@@ -165,6 +165,7 @@ export const Specialization = () => {
                 }
             </Box>
             </Modal>
+            <Button onClick={handleOpen}> Añadir especialización </Button>
             <MUIDataTable
                 className="w-full"
                 title={"Lista de especializaciones"}
@@ -172,7 +173,7 @@ export const Specialization = () => {
                 columns={SPEC_COLUMNS}
                 options={OPTIONS}  
             />
-            <Button className="m-5" onClick={handleOpen}> Añadir especialización </Button>
+            
         </div>
 
         

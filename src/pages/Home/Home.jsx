@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from '../../components/Card/Card'
 
-import { RxDashboard, RxPerson, RxPencil1 } from 'react-icons/rx'
+import { RxDashboard, RxPerson, RxPencil1,RxActivityLog } from 'react-icons/rx'
 import { MdWork } from 'react-icons/md'
 
 export const Home = () => {
@@ -23,7 +23,7 @@ export const Home = () => {
         },
         {
             title: 'Actividades Extracurriculares',
-            icon: <RxPencil1 size={30}/>,
+            icon: <RxActivityLog size={30}/>,
             path: '/dashboard/activity'
         }
     ]
