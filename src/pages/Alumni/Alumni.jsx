@@ -27,6 +27,7 @@ export const Alumni = () => {
   </div>
     :
      (
+        
         <MUIDataTable
             className="w-full"
             title={"Lista de egresados"}
@@ -35,6 +36,7 @@ export const Alumni = () => {
             options={OPTIONS}
             
         />
+        
     )
   )
 }

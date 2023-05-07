@@ -4,6 +4,7 @@ import PacmanLoader from 'react-spinners/SyncLoader'
 import { useParams } from 'react-router-dom'
 import { fetchAlumniById } from '../../api/fetch_alumni'
 import { Item } from '../../components/Item/Item'
+import PostStudy from '../../components/PostStudy/PostStudy'
 
 export const DetailedAlumni = () => {
   const {id} = useParams()
@@ -76,9 +77,25 @@ export const DetailedAlumni = () => {
 
           }
         </div>
-      </section>
 
+      </section>
+      <div>
+      <h2 className='text-2xl md:text-4xl md:mb-2'>Estudios Posteriores</h2>
+      <span className='text-gray-400 text-xl'>Informacion de estudios posteriores</span>
+    </div>
+
+    <section className='flex flex-col overflow-y-scroll'>
+      <div>
+        {
+          Alumni.postStudy?.map((act, index) => (
+            <PostStudy act={act} key={index} alumniId={id}/>
+          ))
+
+        }
       </div>
+    </section>
+      </div>
+      
     )    
   )
 }
