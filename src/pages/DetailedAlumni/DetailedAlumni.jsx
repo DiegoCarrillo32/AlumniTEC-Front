@@ -14,6 +14,7 @@ import { toast } from 'sonner'
 export const DetailedAlumni = () => {
   const {id} = useParams()
   const [Alumni, setAlumni] = useState({})
+  const [Reload, setReload] = useState(false)
   const [Loading, setLoading] = useState(true)
 
   const [open, setOpen] = React.useState(false)
@@ -37,12 +38,21 @@ const handleSubmitCreate = async (e) => {
 
    if(resp != null){
     toast.success("Creado con éxito.")
+    setReload(!Reload)
     handleClose()
    }else{
     toast.error("Ha ocurrido un error");
    }
 
 }
+useEffect(()=>{
+  (async ()=> {
+    setLoading(true)
+    const res = await fetchAlumniById(id)
+    setAlumni(res)
+    setLoading(false)
+  })()
+}, [Reload])
 
 
   useEffect(()=>{
@@ -59,7 +69,7 @@ const handleSubmitCreate = async (e) => {
       <PacmanLoader color={"#123abc"} loading={Loading} size={24} />
     </div>
     :(
-      <div className='flex flex-col w-screen  md:grid md:grid-cols-2 md:pt-10 lg:p-20'>
+      <div className='flex flex-col w-screen  md:grid md:grid-cols-2 md:pt-10 lg:p-20 lg:pb-0'>
         <div className='w-full md:w-80' >
           <img className='w-full' src={Alumni.image} alt={Alumni.name} />
           <h2 className='text-2xl self-center'>{Alumni.name}</h2>
@@ -103,7 +113,7 @@ const handleSubmitCreate = async (e) => {
         <span className='text-gray-400 text-xl'>Informacion sobre las actividades extracurriculares</span>
       </div>
 
-      <section className='flex flex-col overflow-y-scroll'>
+      <section className='flex flex-col overflow-y-scroll h-52'>
         <div>
           {
             Alumni.activity?.map((act, index) => (
@@ -139,11 +149,11 @@ const handleSubmitCreate = async (e) => {
 
     </div>
 
-    <section className='flex flex-col overflow-y-scroll'>
+    <section className='flex flex-col overflow-y-scroll h-52'>
       <div>
         {
           Alumni.postStudy?.map((act, index) => (
-            <PostStudy act={act} key={index} alumniId={id}/>
+            <PostStudy act={act} key={index} alumniId={id} SetReload={setReload}/>
           ))
 
         }

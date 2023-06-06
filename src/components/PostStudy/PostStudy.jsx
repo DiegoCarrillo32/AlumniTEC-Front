@@ -5,7 +5,7 @@ import { Button } from '../Button/Button'
 import { edit_postStudy } from '../../api/edit_postStudy'
 import { toast } from 'sonner'
 
-const PostStudy = ({act,alumniId}) => {
+const PostStudy = ({act,alumniId, SetReload}) => {
     const [open, setOpen] = React.useState(false)
     const handleClose = () => setOpen(false)
     const handleOpen = () => setOpen(true)
@@ -23,6 +23,7 @@ const PostStudy = ({act,alumniId}) => {
         const res = await edit_postStudy(data)
         if(res != null){
             setOpen(false)
+            SetReload(prev => !prev)
             toast.success('Estudios posterior editado con exito')
         }
         else{

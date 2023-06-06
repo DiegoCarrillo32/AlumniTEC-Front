@@ -19,7 +19,7 @@ export const Sidebar = () => {
                 </div>
             </div>
 
-            <nav className='flex flex-col justify-between flex-1 px-2 py-4 h-full'>
+            <nav className='flex flex-col justify-between flex-1 px-2 py-4'>
                 <ul>
                     <li  onClick={()=>{
                             navigate('/dashboard')
