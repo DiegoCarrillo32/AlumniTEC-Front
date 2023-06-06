@@ -27,14 +27,17 @@ export const Alumni = () => {
   </div>
     :
      (
-        <MUIDataTable
-            className="w-full"
-            title={"Lista de egresados"}
-            data={Data}
-            columns={COLUMNS}
-            options={OPTIONS}
-            
-        />
+        <div className='w-full h-full'>
+          <MUIDataTable
+              className=""
+              title={"Lista de egresados"}
+              data={Data}
+              columns={COLUMNS}
+              options={OPTIONS}
+              
+          />
+        </div>
+        
     )
   )
 }

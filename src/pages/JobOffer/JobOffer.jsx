@@ -6,6 +6,9 @@ import { Input } from '../../components/Input/Input'
 import { SyncLoader } from 'react-spinners'
 import { createJobOffer, getJobOffers } from '../../api/fetch_joboffer'
 import { TextArea } from '../../components/TextArea/TextArea'
+import { toast } from 'sonner'
+import MUIDataTable from 'mui-datatables'
+import { COLUMNS_OFFERS, OPTIONS } from '../../utils/constants'
 
 export const JobOffer = () => {
     const [ Loading, setLoading ] = useState(true)
@@ -26,10 +29,14 @@ export const JobOffer = () => {
                 initDate: e.target.init.value,
                 endDate: e.target.end.value,
                 image: base64_data
-            }
-            console.log(data);
+            };
             const res = await createJobOffer(data)
-            console.log(res);
+            if(res.id ){
+                const res = await getJobOffers()
+                setJobOffers(res)
+                toast.success('Oferta de trabajo creada con exito')
+                handleClose()
+            }
         };
         reader.readAsBinaryString(file);
         
@@ -39,7 +46,6 @@ export const JobOffer = () => {
         (async ()=>{
             setLoading(true)
             const res = await getJobOffers()
-            console.log(res);
             setJobOffers(res)
             setLoading(false)
 
@@ -50,7 +56,7 @@ export const JobOffer = () => {
     Loading ? <div className='flex items-center justify-center w-full h-screen'>
     <SyncLoader color={"#123abc"} loading={Loading} size={24} />
   </div> :
-    <div>
+    <div className='flex flex-col h-screen w-screen'>
         <Button onClick={handleOpen}>
             <span>Añadir oferta de trabajo</span>
         </Button>
@@ -71,33 +77,15 @@ export const JobOffer = () => {
                 </form>
             </Box>
             </Modal>
-
-            {
-                jobOffers.map((jobOffer, index) => {
-                    return (
-                        <div key={index} className='flex flex-col items-center justify-center w-full h-screen'>
-                            <h1>{jobOffer.description}</h1>
-                            <h1>{jobOffer.initDate}</h1>
-                            <h1>{jobOffer.endDate}</h1>
-                            {/* const url = `data:image/jpeg;base64,${data.imageData}`; */}
-                            {
-                                // transform the base64 image into a displayable image
-                                
-                            }
-                            <img src={
-
-                                `data:image/jpeg;base64,${btoa(jobOffer.image)}`
-                            } alt="jobOffer" />
-                        </div>
-                    )
-                })
-            }
-
+            <MUIDataTable
+                className="w-full pt-10"
+                title={"Lista de Ofertas"}
+                data={jobOffers}
+                columns={COLUMNS_OFFERS}
+                options={OPTIONS}  
+            />
 
     </div>
-
-
-    
     // <ImageUploader/>
   )
 }

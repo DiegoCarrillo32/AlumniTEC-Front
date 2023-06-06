@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "../components/Button/Button";
 
 export const BASE_API = 'http://localhost:3000'
 export const ACTIVITY_COLUMNS = [
@@ -43,9 +42,37 @@ export const ACTIVITY_COLUMNS = [
 export const OPTIONS = {
     dropdown: true,
     filterType: 'checkbox',
-    rowsPerPage: 10,
+    rowsPerPage: 8,
     rowsPerPageOptions: [10, 20, 30],
   };
+
+  export const COLUMNS_OFFERS = [{
+    name:"description",
+    label:"Descripción",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"initDate",
+    label:"Fecha de inicio",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"endDate",
+    label:"Fecha de cierre",
+    options:{
+        filter: false,
+    }
+}, {
+    name:"id",
+    label:"ID",
+    options:{
+        filter: false,
+        display: false,
+    }
+}
+  ]
 
 export const COLUMNS = [{
     name:"name",

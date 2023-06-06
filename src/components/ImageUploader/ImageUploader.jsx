@@ -15,9 +15,6 @@ export const ImageUploader = () => {
     reader.readAsBinaryString(file);
   };
 
-  useEffect(()=>{
-    console.log(imageData)
-  }, [imageData])
 
   return (
       <Input className='m-4' type="file" onChange={handleImageUpload} />
