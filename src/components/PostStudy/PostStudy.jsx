@@ -4,11 +4,25 @@ import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
 import { edit_postStudy } from '../../api/edit_postStudy'
 import { toast } from 'sonner'
+import { change_active_postStudy } from '../../api/activty_postStudy'
 
 const PostStudy = ({act,alumniId, SetReload}) => {
     const [open, setOpen] = React.useState(false)
     const handleClose = () => setOpen(false)
     const handleOpen = () => setOpen(true)
+
+    const handleActive = async (e) => {
+      e.preventDefault();
+      const res = await change_active_postStudy(act.id)
+      if(res != null){
+
+            SetReload(prev => !prev);
+            toast.success('Estudios posterior cambiado con exito')
+      }
+      else {
+        toast.error('Error al editar estudios posterior')
+      }
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = {
@@ -51,6 +65,7 @@ const PostStudy = ({act,alumniId, SetReload}) => {
             <div className='grid grid-cols-2 rounded-md shadow-md p-5 m-2 bg-slate-50 hover:bg-slate-100'>
         <div className='flex flex-col'>
         <button className= 'text-blue-500 hover:text-blue-700' onClick={handleOpen}>Editar</button>
+        <button className= 'text-blue-500 hover:text-blue-700' onClick={handleActive}>{act.isActive? 'Deshabilitar': 'Habilitar'}</button>
 
         <span>
                 Nombre {act.name}
