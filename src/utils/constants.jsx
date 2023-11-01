@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const BASE_API = 'http://localhost:3000'
+export const BASE_API = 'https://alumni-tec-back-kl5j1ngna-kosti32.vercel.app/'
 export const ACTIVITY_COLUMNS = [
     {
         name:"activityName",
